@@ -9,7 +9,7 @@
 #include <string.h>
 #include <mosquitto.h>
 
-#define BROKER  "test.mosquitto.org"
+#define BROKER  "localhost"
 #define PORT    1883
 #define TOPIC   "mqtt-lab/test/sensor"
 
@@ -60,7 +60,7 @@ int main(void) {
         mosquitto_lib_cleanup();
         return 1;
     }
-
+    printf("[subscriber] Created mosquitto instance with client ID:\n");
     mosquitto_connect_callback_set(mosq, on_connect);
     mosquitto_message_callback_set(mosq, on_message);
     mosquitto_disconnect_callback_set(mosq, on_disconnect);
